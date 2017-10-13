@@ -1,0 +1,140 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="java.util.List" />
+
+        <import type="java.util.Map" />
+
+        <import type="com.zx.databindingdemo.bean.UserBean" />
+        <!--不同路径下有2个相同名字的类，那么给其中一个起一个别名，用alias表示-->
+        <import
+            alias="UserBean2"
+            type="com.zx.databindingdemo.bean.user.UserBean" />
+
+        <!--泛型的支持会在编译时期报红线，但是是可以直接运行的
+       但是需要通过转义字符才行，如：<号用&lt表示;>号用&gt表示;-->
+        <variable
+            name="list"
+            type="List&lt;String&gt;" />
+
+        <variable
+            name="map"
+            type="Map&lt;String,Object&gt;" />
+
+        <variable
+            name="array"
+            type="String[]" />
+
+        <variable
+            name="user"
+            type="UserBean" />
+
+        <variable
+            name="user2"
+            type="UserBean2" />
+
+        <variable
+            name="onClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="handler"
+            type="com.zx.databindingdemo.handler.OnClickHandler" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="vertical">
+
+        <!--官方推荐这种集合框架使用[]的写法。-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{list[0]}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{list.get(1)}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{map[`key0`]}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{map.get(`key1`)}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{array[0]}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{array[1]}" />
+
+
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{`姓名:`+user.name}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{`年龄:`+user.age}" />
+
+
+        <!-- 当imageUrl属性存在时，会自动调用ImageHelper的loadImage方法 -->
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{user.picUrl}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{`user2:`+user2.content}" />
+
+        <!--通过View.onclickListener()实现-->
+        <Button
+            android:id="@+id/click_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{onClickListener}"
+            android:text="点我" />
+
+        <!--通过方法调用实现-->
+        <Button
+            android:id="@+id/click2_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{handler::onClickFriend}"
+            android:text="点我2" />
+
+    </LinearLayout>
+</layout>   
+
+
+   

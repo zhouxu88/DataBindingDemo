@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="doubleBindBean"
+            type="com.zx.databindingdemo.bean.DoubleBindBean" />
+
+        <variable
+            name="doubleBindBean2"
+            type="com.zx.databindingdemo.bean.DoubleBindBean2" />
+
+        <variable
+            name="list"
+            type="android.databinding.ObservableArrayList&lt;String&gt;" />
+
+        <variable
+            name="map"
+            type="android.databinding.ObservableArrayMap&lt;String,Object&gt;" />
+
+        <variable
+            name="onClickListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{doubleBindBean.content}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{doubleBindBean2.username}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{list[0]}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{map["key0"]}' />
+
+        <Button
+            android:id="@+id/change_content_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{onClickListener}"
+            android:text="BaseObservable方式改变内容" />
+
+        <Button
+            android:id="@+id/change_content_btn2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{onClickListener}"
+            android:text="ObservableFields方式改变内容" />
+
+
+        <Button
+            android:id="@+id/change_content_btn3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{onClickListener}"
+            android:text="list改变内容" />
+
+
+        <Button
+            android:id="@+id/change_content_btn4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{onClickListener}"
+            android:text="map改变内容" />
+
+    </LinearLayout>
+</layout>

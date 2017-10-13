@@ -1,0 +1,43 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="onClickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+
+        <Button
+            android:id="@+id/basic_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{onClickListener}"
+            android:text="DataBinding基础用法" />
+
+
+        <Button
+            android:id="@+id/double_bind_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{onClickListener}"
+            android:text="DataBinding双向绑定" />
+
+        <Button
+            android:id="@+id/recycler_view_bind_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{onClickListener}"
+            android:text="RecyclerView使用DataBinding" />
+        
+    </LinearLayout>
+</layout>
+
+
+   
